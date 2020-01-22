@@ -1,39 +1,42 @@
 ---
-- name: Hostname a variable
-  debug: var=inventory_hostname
-  
-- name: Check ansible_os_family
-  debug :
-    msg : "ansible_os_family={{ ansible_os_family }}"
+- name: EzyAdmin test server connection
+  hosts: all
+  tasks:
+    - name: Hostname a variable
+      debug: var=inventory_hostname
 
-- block:
-## Check sudo command
-  - name: Test command for linux OS
-    #command: whoami
-    shell: "{{item}}"
-    #shell: whoami
-    become: true
-    register: whoamiout
-    changed_when: false
-    with_items:
-      - "whoami"
-    #  #- "/usr/bin/whoami"
-    failed_when: "'error' in whoamiout.stderr"
-    
-  - debug: msg="whoami={{ whoamiout.results }}"
-  #- debug: msg="Output whoami={{ whoamiout.stdout }}"  
-    
-  when: (ansible_os_family == "RedHat") or (ansible_os_family == "Redhat") or (ansible_os_family == "CentOS") or (ansible_os_family == "Debian")
+    - name: Check ansible_os_family
+      debug:
+        msg: "ansible_os_family={{ ansible_os_family }}"
 
-- block:
-  - name: Test command for windows OS
-    win_command: whoami
-    #become: true
-    register: whoamiout
-    changed_when: false
-    #when: ansible_os_family == "Windows"
-    failed_when: "'error' in whoamiout.stderr"
-  
-  #- debug: msg="whoami={{ whoamiout.results }}"
-  - debug: msg="Output whoami={{ whoamiout.stdout }}"
-  when: ansible_os_family == "Windows"
+    - block:
+        ## Check sudo command
+        - name: Test command for linux OS
+          #command: whoami
+          shell: "{{item}}"
+          #shell: whoami
+          become: true
+          register: whoamiout
+          changed_when: false
+          with_items:
+            - "whoami"
+          #  #- "/usr/bin/whoami"
+          failed_when: "'error' in whoamiout.stderr"
+
+        - debug: msg="whoami={{ whoamiout.results }}"
+      #- debug: msg="Output whoami={{ whoamiout.stdout }}"
+
+      when: (ansible_os_family == "RedHat") or (ansible_os_family == "Redhat") or (ansible_os_family == "CentOS") or (ansible_os_family == "Debian")
+
+    - block:
+        - name: Test command for windows OS
+          win_command: whoami
+          #become: true
+          register: whoamiout
+          changed_when: false
+          #when: ansible_os_family == "Windows"
+          failed_when: "'error' in whoamiout.stderr"
+
+        #- debug: msg="whoami={{ whoamiout.results }}"
+        - debug: msg="Output whoami={{ whoamiout.stdout }}"
+      when: ansible_os_family == "Windows"
