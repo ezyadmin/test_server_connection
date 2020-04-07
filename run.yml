@@ -35,8 +35,8 @@
           register: whoamiout
           changed_when: false
           #when: ansible_os_family == "Windows"
-          failed_when: "'error' in whoamiout.stderr"
-
-        #- debug: msg="whoami={{ whoamiout.results }}"
+          #failed_when: "'error' in whoamiout.stderr"
+        - debug: msg="results whoami={{ whoamiout.stderr }}"
+        - debug: msg="results whoami={{ whoamiout.results }}"
         - debug: msg="Output whoami={{ whoamiout.stdout }}"
       when: ansible_os_family == "Windows"
