@@ -23,7 +23,6 @@
           #  #- "/usr/bin/whoami"
           failed_when: "'error' in whoamiout.stderr"
         - debug: msg="Output whoami={{ whoamiout.stdout }}"
-
       when: (ansible_os_family == "RedHat") or (ansible_os_family == "Redhat") or (ansible_os_family == "CentOS") or (ansible_os_family == "Debian")
 
     - block:
