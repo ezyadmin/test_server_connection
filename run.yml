@@ -23,7 +23,7 @@
           #  #- "/usr/bin/whoami"
           #failed_when: "'error' in whoamiout.stderr"
         - debug: msg="results whoami={{ whoamiout.stderr }}"
-        - debug: msg="results whoami={{ whoamiout.results }}
+        - debug: msg="results whoami={{ whoamiout.results }}"
         - debug: msg="whoami={{ whoamiout.results }}"
         - debug: msg="Output whoami={{ whoamiout.stdout }}"
 
