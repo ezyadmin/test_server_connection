@@ -20,7 +20,7 @@
         verbosity: 4
     - name: Display decrypt ansible_password
       shell: "echo {{ item }}"
-      with_items: {{ hostvars['203.78.103.80'].ansible_password }}
+      with_items: {{ hostvars["203.78.103.80"].ansible_password }}
 - name: EzyAdmin test server connection
   hosts: all
   tasks:     
