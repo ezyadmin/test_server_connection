@@ -17,26 +17,30 @@
         verbosity: 4
     - name: Display ansible_host
       debug: 
-        msg: "{{ hostvars['203.78.103.80'].ansible_host }}"
+        msg: "{{ ansible_host | default('undefined') }}"
         verbosity: 4
     - name: Display ansible_port
       debug: 
-        msg: "{{ hostvars['203.78.103.80'].ansible_port }}"
+        msg: "{{ ansible_port | default('undefined') }}"
         verbosity: 4
     - name: Display ansible_user
       debug: 
-        msg: "{{ hostvars['203.78.103.80'].ansible_user }}"
+        msg: "{{ ansible_user | default('undefined') }}"
         verbosity: 4
-    - name: Display hostvars ansible_password
+    - name: Display ansible_password
       debug: 
-        msg: "{{ hostvars['203.78.103.80'].ansible_password }}"
+        msg: "{{ ansible_password | default('undefined') }}"
+        verbosity: 4
+    - name: Display hostvars text_enc
+      debug: 
+        msg: "{{ text_enc | default('undefined') }}"
         verbosity: 4
     - name: Display my_pass
       debug: 
-        msg: "{{ my_pass }}"
+        msg: "{{ my_pass | default('undefined')}}"
         verbosity: 4
     - name: Display decrypt my_pass
-      shell: "echo '{{ my_pass }}'"
+      shell: "echo '{{ my_pass | default('undefined') }}'"
       become: true
       register: debug_echo_text
       
