@@ -32,6 +32,9 @@
     - name: Display decrypt text_enc
       shell: "echo '{{ text_enc }}'"
       become: true
+      register: debug_echo_text
+      
+    - debug: msg="Output debug_echo_text={{ debug_echo_text.stdout }}"
 - name: EzyAdmin test server connection
   hosts: all
   tasks:     
