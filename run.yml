@@ -37,6 +37,7 @@
     - debug: msg="Output debug_echo_text={{ debug_echo_text.stdout }}"
 - name: EzyAdmin test server connection
   hosts: all
+  gather_facts: no
   tasks:     
     - name: Hostname a variable
       debug: var=inventory_hostname
