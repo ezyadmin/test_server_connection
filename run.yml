@@ -25,12 +25,13 @@
       debug: 
         msg: "{{ hostvars['203.78.103.80'].ansible_password }}"
         verbosity: 4
-    - name: Display my_pass
+    - name: Display text_enc
       debug: 
-        msg: "{{ my_pass }}"
+        msg: "{{ text_enc }}"
         verbosity: 4
-    - name: Display decrypt ansible_password
-      shell: "echo '{{ my_pass }}'"
+    - name: Display decrypt text_enc
+      shell: "echo '{{ text_enc }}'"
+      become: true
 - name: EzyAdmin test server connection
   hosts: all
   tasks:     
