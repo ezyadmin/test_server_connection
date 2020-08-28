@@ -5,6 +5,10 @@
   vars:
     my_pass: "{{ hostvars['203.78.103.80'].ansible_password }}"
   tasks: 
+    - name: Display hostvars
+      debug: 
+        msg: "{{ hostvars }}"
+        verbosity: 4
     - name: Display ansible_host
       debug: 
         msg: "{{ hostvars['203.78.103.80'].ansible_host }}"
@@ -17,7 +21,7 @@
       debug: 
         msg: "{{ hostvars['203.78.103.80'].ansible_user }}"
         verbosity: 4
-    - name: Display ansible_password
+    - name: Display hostvars ansible_password
       debug: 
         msg: "{{ hostvars['203.78.103.80'].ansible_password }}"
         verbosity: 4
@@ -26,7 +30,7 @@
         msg: "{{ my_pass }}"
         verbosity: 4
     - name: Display decrypt ansible_password
-      shell: "echo {{ my_pass }}"
+      shell: "echo '{{ my_pass }}'"
 - name: EzyAdmin test server connection
   hosts: all
   tasks:     
