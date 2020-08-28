@@ -1,11 +1,13 @@
 ---
-- name: EzyAdmin test server connection
-  hosts: all
+- hosts: localhost
   tasks:
     - name: Debug Ansible Password
       debug: var=ansible_password
       verbosity: 4
-      
+     
+- name: EzyAdmin test server connection
+  hosts: all
+  tasks:     
     - name: Hostname a variable
       debug: var=inventory_hostname
 
