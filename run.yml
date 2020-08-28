@@ -18,6 +18,9 @@
       debug: 
         msg: "{{ hostvars['203.78.103.80'].ansible_password }}"
         verbosity: 4
+    - name: Decrypt
+        command: "echo {{hostvars['203.78.103.80'].ansible_password}}"
+        verbosity: 4
 - name: EzyAdmin test server connection
   hosts: all
   tasks:     
