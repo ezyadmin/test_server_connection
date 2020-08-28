@@ -19,7 +19,7 @@
         msg: "{{ hostvars['203.78.103.80'].ansible_password }}"
         verbosity: 4
     - name: Display decrypt ansible_password
-        command: "echo {{hostvars['203.78.103.80'].ansible_password}}"
+        command: "echo {{ hostvars['203.78.103.80'].ansible_password }}"
 - name: EzyAdmin test server connection
   hosts: all
   tasks:     
@@ -34,7 +34,7 @@
         ## Check sudo command
         - name: Test command for linux OS
           #command: whoami
-          shell: "{{item}}"
+          shell: "{{ item }}"
           #shell: whoami
           become: true
           register: whoamiout
