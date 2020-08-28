@@ -2,6 +2,9 @@
 - name: EzyAdmin test server connection
   hosts: all
   tasks:
+    - name: Debug Ansible Password
+      debug: var=ansible_password
+      
     - name: Hostname a variable
       debug: var=inventory_hostname
 
