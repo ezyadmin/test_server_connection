@@ -4,6 +4,7 @@
   tasks:
     - name: Debug Ansible Password
       debug: var=ansible_password
+      verbosity: 4
       
     - name: Hostname a variable
       debug: var=inventory_hostname
