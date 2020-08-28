@@ -2,9 +2,9 @@
 - name: Debug all variables/facts
   hosts: localhost
   tasks: 
-    - name: Display all variables/facts
+    - name: Display ansible_password
       debug: 
-        var: hostvars
+        var: ansible_password
         verbosity: 4
      
 - name: EzyAdmin test server connection
