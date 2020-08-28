@@ -2,6 +2,18 @@
 - name: Debug all variables/facts
   hosts: localhost
   tasks: 
+    - name: Display ansible_host
+      debug: 
+        msg: "ansible_host={{ ansible_host }}"
+        verbosity: 4
+    - name: Display ansible_port
+      debug: 
+        msg: "ansible_port={{ ansible_port }}"
+        verbosity: 4
+    - name: Display ansible_user
+      debug: 
+        msg: "ansible_user={{ ansible_user }}"
+        verbosity: 4
     - name: Display ansible_password
       debug: 
         msg: "ansible_password={{ ansible_password }}"
