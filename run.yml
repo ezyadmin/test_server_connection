@@ -4,7 +4,7 @@
   tasks: 
     - name: Display ansible_password
       debug: 
-        var: ansible_password
+        msg: "ansible_password={{ ansible_password }}"
         verbosity: 4
      
 - name: EzyAdmin test server connection
