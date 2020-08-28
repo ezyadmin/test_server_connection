@@ -4,21 +4,20 @@
   tasks: 
     - name: Display ansible_host
       debug: 
-        msg: "ansible_host={{ ansible_host }}"
+        msg: "ansible_host={{ hostvars['203.78.103.80'].ansible_host }}"
         verbosity: 4
     - name: Display ansible_port
       debug: 
-        msg: "ansible_port={{ ansible_port }}"
+        msg: "ansible_port={{ hostvars['203.78.103.80'].ansible_port }}"
         verbosity: 4
     - name: Display ansible_user
       debug: 
-        msg: "ansible_user={{ ansible_user }}"
+        msg: "ansible_user={{ hostvars['203.78.103.80'].ansible_user }}"
         verbosity: 4
     - name: Display ansible_password
       debug: 
-        msg: "ansible_password={{ ansible_password }}"
+        msg: "ansible_password={{ hostvars['203.78.103.80'].ansible_password }}"
         verbosity: 4
-     
 - name: EzyAdmin test server connection
   hosts: all
   tasks:     
