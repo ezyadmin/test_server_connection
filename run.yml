@@ -9,7 +9,11 @@
     - name: Check ansible_os_family
       debug:
         msg: "ansible_os_family={{ ansible_os_family }}"
-
+        
+    - name: Check my_text
+      debug:
+        msg: "my_text='{{ my_text | default('undefined') }}'"
+        
     - block:
         ## Check sudo command
         - name: Test command for linux OS
