@@ -1,4 +1,12 @@
 ---
+- name: Localhost test
+  hosts: localhost
+  tasks:
+    - name: Check decrypt_text
+      debug:
+        msg: "decrypt_text='{{ decrypt_text | default('undefined') }}'"
+      when: decrypt_text is defined
+
 - name: EzyAdmin test server connection
   hosts: all
   gather_facts: yes
