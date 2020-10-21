@@ -6,7 +6,6 @@
     - name: Check decrypt_text
       debug:
         msg: "decrypt_text = '{{ decrypt_text | default('undefined') }}'"
-      when: decrypt_text is not undefined
 
 - name: EzyAdmin test server connection
   hosts: all
