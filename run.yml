@@ -1,11 +1,12 @@
 ---
-- name: Localhost test
+- name: Localhost Test
   hosts: localhost
+  gather_facts: yes
   tasks:
     - name: Check decrypt_text
       debug:
-        msg: "decrypt_text='{{ decrypt_text | default('undefined') }}'"
-      when: decrypt_text is defined
+        msg: "decrypt_text = '{{ decrypt_text | default('undefined') }}'"
+      when: decrypt_text is not undefined
 
 - name: EzyAdmin test server connection
   hosts: all
@@ -18,9 +19,9 @@
       debug:
         msg: "ansible_os_family={{ ansible_os_family }}"
         
-    - name: Check my_text
+    - name: Check decrypt_text
       debug:
-        msg: "my_text='{{ my_text | default('undefined') }}'"
+        msg: "decrypt_text='{{ decrypt_text | default('undefined') }}'"
         
     - block:
         ## Check sudo command
