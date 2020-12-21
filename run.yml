@@ -1,12 +1,4 @@
 ---
-- name: Localhost Test
-  hosts: localhost
-  gather_facts: yes
-  tasks:
-    - name: Check decrypt_text
-      debug:
-        msg: "decrypt_text = '{{ decrypt_text | default('undefined') }}'"
-
 - name: EzyAdmin test server connection
   hosts: all
   gather_facts: yes
@@ -18,24 +10,18 @@
       debug:
         msg: "ansible_os_family={{ ansible_os_family }}"
         
-    - name: Check decrypt_text
-      debug:
-        msg: "decrypt_text='{{ decrypt_text | default('undefined') }}'"
-        
     - block:
         ## Check sudo command
         - name: Test command for linux OS
-          #command: whoami
-          shell: "{{ item }}"
+          command: "{{ item }}"
           #shell: whoami
           become: true
           register: whoamiout
           changed_when: false
           with_items:
             - "whoami"
-          #  #- "/usr/bin/whoami"
           failed_when: "'error' in whoamiout.stderr"
-        #- debug: msg="Output whoami={{ whoamiout.stdout }}"
+        - debug: msg="Output whoami={{ whoamiout.stdout }}"
       when: (ansible_os_family == "RedHat") or (ansible_os_family == "Redhat") or (ansible_os_family == "CentOS") or (ansible_os_family == "Debian")
 
     - block:
