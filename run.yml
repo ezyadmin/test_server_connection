@@ -12,7 +12,7 @@
         
     - block:
         ## Check sudo command
-        - name: Test command for linux OS
+        - name: Test change user privilege to superuser
           command: "{{ item }}"
           #shell: whoami
           become: true
@@ -25,7 +25,7 @@
       when: (ansible_os_family == "RedHat") or (ansible_os_family == "Redhat") or (ansible_os_family == "CentOS") or (ansible_os_family == "Debian")
 
     - block:
-        - name: Test command for windows OS
+        - name: Test change user privilege to superuser
           win_command: whoami
           #become: true
           register: whoamiout
