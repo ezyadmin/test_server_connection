@@ -45,6 +45,7 @@
 
         - set_fact:
             ezOutputConnection : {
+              "hostname" : "{{inventory_hostname}}",
               "ip_authorized" : "{{ip_authorized}}"
             }
         - debug:
